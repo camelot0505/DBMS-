@@ -1,0 +1,43 @@
+Q.11) Write a PL/SQL program for displaying ename and esal of all employees using cursor 
+
+ANSWER:
+create table employees(
+ename  varchar(20),
+esal int,
+e_dept_no int)
+
+insert into employees values(
+'John',12500,84)
+insert into employees values(
+'Mike',13500,14)
+insert into employees values(
+'Max',18500,64)
+
+DECLARE
+   CURSOR emp_cursor IS
+      SELECT ename, esal
+      FROM employees;
+      
+   -- Declare variables to store employee name and salary
+   emp_name employees.ename%TYPE;
+   emp_salary employees.esal%TYPE;
+BEGIN
+   -- Open the cursor
+   OPEN emp_cursor;
+
+   -- Loop through the cursor records and display ename and esal
+   LOOP
+      FETCH emp_cursor INTO emp_name, emp_salary;
+      EXIT WHEN emp_cursor%NOTFOUND;
+      DBMS_OUTPUT.PUT_LINE('Employee Name: ' || emp_name || ', Employee Salary: ' || emp_salary);
+   END LOOP;
+
+   -- Close the cursor
+   CLOSE emp_cursor;
+END;
+
+OUTPUT:
+Employee Name: John, Employee Salary: 12500
+Employee Name: Mike, Employee Salary: 13500
+Employee Name: Max, Employee Salary: 18500
+

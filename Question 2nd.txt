@@ -1,0 +1,54 @@
+Q.2) Create a table EMP and Dept with following schema.
+EMP
+Empno ename salary Deptno
+Dept
+Deptno dname
+a) Apply primary keys for empno and deptno
+b) Increase the size by 30 of dname
+c) Add dept_location column in dept table
+
+ANSWER: TABLE1:
+CREATE TABLE EMP1(
+Empno int,
+ename varchar(20),
+salary int,
+Deptno varchar(30),
+primary key(Empno))
+
+insert into EMP1 values
+(1,'Itachi',12500,21)
+insert into EMP1 values
+(2,'Obito',13200,11)
+insert into EMP1 values
+(3,'Madara',18200,17)
+insert into EMP1 values
+(4,'Pain',14200,18)
+
+select * from EMP1
+
+
+TABLE2:
+CREATE TABLE Dept1(
+Deptno int,
+dname varchar(30),
+dept_location varchar (100),
+primary key(Deptno))
+
+insert into Dept1 values
+(21,'War','Leaf_Village')
+insert into Dept1 values(
+11,'Battle','Sand_Village')
+insert into Dept1 values(
+(17,'Rage','Fire_Village')
+insert into Dept1 values
+(18,'Medics','Snow_Village')
+
+//Increasing
+ALTER table Dept1
+MODIFY dname varchar(30)
+
+//Adding Column
+ALTER Table Dept1
+Add dept_location varchar(50)
+
+select * from Dept1

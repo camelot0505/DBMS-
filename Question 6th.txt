@@ -1,0 +1,63 @@
+Q.6) Create a table EMP with following schema.
+EMP
+empno ename salary Deptno
+a) Inset at least 10 rows in the table
+b) Display min and max salary from emp table
+c) Display lowest paid employees details under each department
+d) Display the details of employees earning salary greater than 10,000 from every department
+
+ANSWER:// Creating Table
+create table EMP(
+  emp no int,
+  ename varchar(20),
+  salary int,
+  Dept_no)
+
+//Insert at least 10 rows in the table
+INSERT INTO EMP  VALUES
+(1, 'Michael', 9000, 101),
+(2, 'Sarah', 12000, 103),
+(3, 'Joe', 28000, 104),
+(4, 'Max', 12000, 101),
+(5, 'Daniel', 4000, 102),
+(6, 'Olivia', 25000, 103),
+(7, 'William', 5000, 101),
+(8, 'Sophia', 5000, 104),
+(9, 'Joseph', 30000, 102),
+(10, 'Ava', 13000, 101);
+
+// Display min and max salary from emp table
+SELECT MIN(salary) AS min_salary, MAX(salary) AS max_salary
+FROM EMP;
+OUTPUT:
+min_salary	   max_salary
+4000	            30000
+
+
+
+// Display lowest paid employees details under each department
+SELECT Dept_no, ename, salary
+FROM EMP
+WHERE (Dept_no, salary) IN (
+    SELECT Dept_no, MIN(salary)
+    FROM EMP
+    GROUP BY Dept_no
+);
+OUTPUT:
+Dept_no	ename     	salary
+103			Sarah		12000
+102			Daniel		4000
+101			William		5000
+104			Sophia		5000
+
+// Display details of employees earning a salary greater than 10,000 from every department
+SELECT empno, ename, salary, Deptno
+FROM EMP
+WHERE salary > 10000;
+OUTPUT:
+empno	ename		salary		Dept_no
+2		Sarah		12000		103
+3		Joe			28000		104
+4		Max		12000		101
+6		Olivia		25000		103
+9		Joseph		30000		102

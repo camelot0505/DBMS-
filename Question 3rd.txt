@@ -1,0 +1,60 @@
+Q.3) Create a table EMP and Dept with following schema.
+EMP
+Empno ename salary Deptno
+Dept
+Deptno dname
+a) Apply primary keys for empno and deptno
+b) Apply foreign keys for deptno
+c) Inset at least 5 rows in the table
+d) Display all the information of EMP table and Dept
+
+ANSWER: TABLE1:
+CREATE TABLE EMP2(
+Empno int,
+ename varchar(20),
+salary int,
+Deptno int,
+primary key(Empno),
+Foreign key(Deptno) references Dept2(Deptno)
+)
+
+//ADDING FOREIGN KEY 
+Alter table EMP2
+ADD FOREIGN KEY(Deptno) references Dept1(Deptno);
+
+
+insert into EMP2 values
+(1,'Itachi',16200,11)
+insert into EMP2 values
+(2,'Obito',15200,28)
+insert into EMP2 values
+(3,'Madara',19200,38)
+insert into EMP2 values
+(4,'Pain',12200,18)
+insert into EMP2 values
+(5,'Yahiko',14200,19)
+
+
+
+
+TABLE2:
+CREATE TABLE Dept2(
+Deptno int,
+dname varchar(30),
+dept_location varchar (100),
+primary key(Deptno))
+
+insert into Dept2 values
+(11,'War','Leaf_Village')
+insert into Dept2 values
+(28,'Battle','Sand_Village')
+insert into Dept2 values
+(38,'Rage','Fire_Village')
+insert into Dept2 values
+(18,'Medics','Snow_Village')
+insert into Dept2 values
+(19,'Tools','Hidden_Village')
+
+select * from EMP2
+
+select * from Dept2

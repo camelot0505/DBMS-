@@ -1,0 +1,47 @@
+Q.9) Implement Views
+i) Create different views ii) Insert, modify and delete records through views.
+ iii) Delete the views.
+
+ANSWER:  //Creating Table
+CREATE TABLE EMP4(
+  empno int,
+  empname varchar(20),
+  salary int,
+  dept_no int)
+ 
+//Inserting Values
+insert into EMP4 values(
+1,'Jack',15000,14)
+insert into EMP4 values
+(2,'Joe',18000,74)
+insert into EMP4 values
+(3,'Albert',20000,24)
+insert into EMP4 values
+(4,'Robert',15500,15)
+insert into EMP4 values
+(5,'John',12000,11)
+
+//Creating View
+CREATE VIEW EMP4_View AS
+SELECT empno, salary, dept_no
+FROM EMP4;
+
+//Inserting Values In View
+insert into EMP4_view values
+(6,12400,45)
+insert into EMP4_view values
+(7,16400,25)
+insert into EMP4_view values
+(8,18200,55)
+
+//Updating View
+UPDATE EMP4_View
+SET salary = 25000
+WHERE empno = 6
+
+//Deleting From View
+DELETE FROM Emp4_View
+WHERE empno = 8
+
+//Deleting View
+drop view EMP4_View

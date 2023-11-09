@@ -1,0 +1,43 @@
+Q.4) Create a table EMP with following schema.
+EMP
+empno ename salary Deptno
+a) Insert at least 5 rows in the table
+b) Display all the information of EMP table
+c) Update the salary of employees to 15,000 working in production department
+d) Display the information of employees working in IT department
+
+ANSWER: TABLE1:
+Create Table EMP(
+  empno int,
+  ename varchar(20),
+  salary int,
+  Deptno int)
+
+//Adding Colomn Dept Name
+  ALTER TABLE EMP  
+  ADD Deptname varchar(30) //Adding Colomn
+
+//Insert at least 5 rows in the table
+insert into EMP values(
+  1,'John',12000,12,'Production')
+insert into EMP values(
+  2,'Mike',18000,8,'Medicals')
+insert into EMP values(
+  3,'Jack',10000,21,'IT')
+insert into EMP values(
+  4,'Max',14000,12,'Production')
+insert into EMP values(
+  5,'Albert',20000,11,'Transaction')
+insert into EMP values(
+  6,'Joe',25000,21,'IT')
+
+// Display all the information of EMP table
+select * from EMP
+
+//Update the salary of employees to 15,000 working in production department
+UPDATE EMP
+SET salary = 15000
+WHERE Deptno = 12; (Production Dept)
+
+//Display the information of employees working in IT department
+SELECT * FROM EMP WHERE Deptno = 21

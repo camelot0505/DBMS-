@@ -1,0 +1,48 @@
+Q.5)  Create a table EMP with following schema.
+EMP
+empno ename salary Deptno
+a) Insert at least 10 rows in the table
+b) Display names of all employees whose name is exactly 3 characters long.
+c) List the employee name and salary whose salary is not in the range of 10,000 to 20,000
+
+ANSWER: // Creating Table
+create table EMP(
+  emp no int,
+  ename varchar(20),
+  salary int,
+  Dept_no)
+
+//Insert at least 10 rows in the table
+INSERT INTO EMP  VALUES
+(1, 'Michael', 15000, 101),
+(2, 'Sarah', 22000, 103),
+(3, 'Joe', 28000, 104),
+(4, 'Max', 12000, 101),
+(5, 'Daniel', 20000, 102),
+(6, 'Olivia', 25000, 103),
+(7, 'William', 11000, 101),
+(8, 'Sophia', 27000, 104),
+(9, 'Joseph', 30000, 102),
+(10, 'Ava', 13000, 101);
+
+//Display names of all employees whose name is exactly 3 characters long.
+SELECT ename
+FROM EMP
+WHERE LENGTH(ename) = 3
+Output:
+Joe
+Max
+Ava
+
+
+//List the employee name and salary whose salary is not in the range of 10,000 to 20,000
+SELECT ename, salary
+FROM EMP
+WHERE salary < 10000 OR salary > 20000;
+Output:
+Sarah	22000
+Joe	        28000
+Olivia	25000
+Sophia	27000
+Joseph	30000
+

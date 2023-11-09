@@ -1,0 +1,35 @@
+Q.12) Write PL/SQL code to create triggers on given database.
+
+ANSWER:
+//Creating Table
+CREATE TABLE employees (
+    employee_id int,
+    employee_name varchar(50),
+    salary int
+)
+//Fetching
+select * from employees
+
+//Inserting into Table
+insert into employees values(
+1,'John',14000)
+insert into employees values(
+2,'Joe',11500)
+insert into employees values(
+3,'Jack',35000)
+
+//Deleting
+delete from employees where employee_id = 3
+
+
+//Creating Trigger
+CREATE OR REPLACE TRIGGER before_insert_employee
+BEFORE INSERT ON employees
+FOR EACH ROW
+BEGIN
+    -- You can put your PL/SQL code here
+    -- For example, you can enforce a salary constraint:
+    IF :NEW.salary < 30000 THEN
+        RAISE_APPLICATION_ERROR(-20000, 'Salary must be at least $30,000.');
+    END IF;
+END;

@@ -1,0 +1,73 @@
+Q.8) Perform INNER JOIN and FULL JOIN
+
+ANSWER: //Creating 1st Table
+CREATE TABLE student (ID int,
+Name varchar(30),
+Class varchar(10))
+
+//Inserting Values 
+INSERT INTO student VALUES (
+1,'James','TE Comp'),
+(2,'John','TE Elec'),
+(3,'Kevin','TE Mech'),
+(4,'Lee','TE Civil'),
+(5,'Andrew','TE E&TC')
+
+//Creating 2nd Table
+CREATE TABLE Course (Course_ID int,
+Name varchar(10))
+
+//Inserting Values
+INSERT INTO Course VALUES (
+1,'Clark'),
+(2,'Blake'),
+(3,'Jennifer'),
+(6,'Trump'),
+(7,'Joe')
+
+
+// Inner Join
+SELECT *
+FROM student
+INNER JOIN course
+ON student.ID = course.Course_ID;
+OUTPUT:
+ID	Name		Class		Course_ID		Name
+1	James		TE Comp		1			Clark
+2	John		TE Elec			2			Blake
+3	Kevin		TE Mech		3			Jennifer
+
+
+// Full Join
+SELECT *
+FROM student
+LEFT JOIN course
+ON student.ID = course.Course_ID
+UNION
+SELECT *
+FROM student
+Right JOIN course
+ON student.ID = course.Course_ID;
+OUTPUT:
+ID		Name		Class	Course_ID
+null		Trump		null			6
+null		Joe			null			7
+1		Clark		TE Comp	1
+2		Blake		TE Elec		2
+3		Jennifer		TE Mech	3
+4		null			TE Civil		null
+5		null			TE E&TC		null
+
+
+//Right Join
+SELECT *
+FROM student
+Right JOIN course
+ON student.ID = course.Course_ID;
+OUTPUT:
+ID		Name		Class	    Course_ID
+1		Clark		TE Comp	1
+2		Blake		TE Elec		2
+3		Jennifer		TE Mech	3
+null		Trump		null			6
+null		Joe			null			7

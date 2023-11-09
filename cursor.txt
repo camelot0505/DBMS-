@@ -1,0 +1,51 @@
+insert into student values(1,'as',1000);
+
+
+create or 
+replace trigger tru
+before insert on student
+for each row
+
+begin
+if :new.salary<30000 then raise_application_error(-20000,'salary must be greater than $30000');
+end if;
+end;
+
+
+
+
+select * from student
+
+declare
+cursor na is 
+select name
+from student;
+naam student.name%type;
+begin
+open na;
+loop
+fetch na into naam;
+exit when na%notfound;
+dbms_output.put_line(naam ||'     he');
+end loop;
+end;
+
+
+
+
+create or replace function func(num in number)
+return number is 
+fact number :=1;
+begin 
+if num<=0 then return NULL;
+else for i in 1..num loop fact:=fact * i;
+end loop;
+return fact;
+end if;
+end;
+declare 
+result number;
+begin 
+result := func(5);
+dbms_output.put_line(result);
+end;

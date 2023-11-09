@@ -1,0 +1,37 @@
+Q.14) Design and Develop MongoDB Queries using aggregation and indexing with suitable
+ Example using MongoDB.
+
+
+ANSWER:
+// Sample Data
+// Assuming you have a collection named "students" with documents representing students and their test scores.
+// Sample Data:
+db.students.insertMany([
+   {
+      "_id": 1,
+      "name": "Alice",
+      "scores": [85, 92, 78, 89, 95]
+   },
+   {
+      "_id": 2,
+      "name": "Bob",
+      "scores": [90, 88, 76, 94, 87]
+   }
+])
+
+// Create an index for improved query performance
+db.students.createIndex({ _id: 1 })
+
+// Aggregation to Calculate Average Score
+db.students.aggregate([
+   {
+      $unwind: "$scores"
+   },
+   {
+      $group: {
+         _id: "$_id",
+         name: { $first: "$name" },
+         average_score: { $avg: "$scores" }
+      }
+   }
+])
